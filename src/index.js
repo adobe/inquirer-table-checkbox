@@ -30,9 +30,9 @@ class TablePrompt extends Base {
     if (this.rows.length > 0) {
       if (this.rows.get(this.pointer).disabled) {
         this.pointer = this.findNextChoice(1)
-      } 
+      }
     }
-    
+
     this.pageSize = this.opt.pageSize || 5
   }
 
@@ -72,12 +72,13 @@ class TablePrompt extends Base {
   }
 
   /**
-   * Given an offset, find the next valid row, starting 
+   * Given an offset, find the next valid row, starting
    * at the current pointer position.
-   * @param {number} offset 
-   * @returns 
+   *
+   * @param {number} offset Search offset
+   * @returns {number} Pointer to next valid row
    */
-  findNextChoice(offset) {
+  findNextChoice (offset) {
     let newPointer = this.pointer
     let selectedOption
     const length = this.rows.length
@@ -89,7 +90,7 @@ class TablePrompt extends Base {
     }
     return newPointer
   }
- 
+
   onDownKey () {
     this.pointer = this.findNextChoice(1)
     this.render()
@@ -190,7 +191,7 @@ class TablePrompt extends Base {
         let value
 
         if (row.disabled) {
-          value = "-"
+          value = '-'
         } else {
           if (this.values[rowIndex]) {
             value = figures.radioOn
