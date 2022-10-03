@@ -29,7 +29,7 @@ class TablePrompt extends Base {
     this.pointer = 0
     if (this.rows.length > 0) {
       if (this.rows.get(this.pointer).disabled) {
-        this.pointer = this.findNextChoice(1)
+        this.pointer = this.findNextRow(1)
       }
     }
 
@@ -72,13 +72,13 @@ class TablePrompt extends Base {
   }
 
   /**
-   * Given an offset, find the next valid row, starting
+   * Given an offset, find the next enabled row, starting
    * at the current pointer position.
    *
    * @param {number} offset Search offset
-   * @returns {number} Pointer to next valid row
+   * @returns {number} Pointer to next enabled row
    */
-  findNextChoice (offset) {
+  findNextRow (offset) {
     let newPointer = this.pointer
     let selectedOption
     const length = this.rows.length
@@ -92,7 +92,7 @@ class TablePrompt extends Base {
   }
 
   onDownKey () {
-    this.pointer = this.findNextChoice(1)
+    this.pointer = this.findNextRow(1)
     this.render()
   }
 
@@ -127,7 +127,7 @@ class TablePrompt extends Base {
   }
 
   onUpKey () {
-    this.pointer = this.findNextChoice(-1)
+    this.pointer = this.findNextRow(-1)
     this.render()
   }
 
