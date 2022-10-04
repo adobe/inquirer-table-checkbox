@@ -208,7 +208,7 @@ class TablePrompt extends Base {
           cellValue = row[column.name] || ''
         }
 
-        // Dim disabled rows 
+        // Dim disabled rows
         cellValue = row.disabled ? chalk.gray(cellValue) : cellValue
 
         // eslint-disable-next-line no-unused-vars
